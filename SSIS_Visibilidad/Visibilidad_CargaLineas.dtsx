@@ -1,0 +1,60 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/20/2020 8:11:36 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="WCUALHH3MTN2"
+  DTS:CreatorName="PPGNA\H253159"
+  DTS:DTSID="{48793794-5788-41C7-A2A4-CD7BB062B0F0}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.132"
+  DTS:LocaleID="2058"
+  DTS:ObjectName="Visibilidad_CargaLineas"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{C9F699FF-A1DB-4D25-B479-3793C19B0A9A}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[172.19.12.100:1528/DEV.APPS]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{EAB113E5-5683-44E9-86B5-511A5780F8F6}"
+      DTS:ObjectName="172.19.12.100:1528/DEV.APPS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=172.19.12.100:1528/DEV;User ID=APPS;Provider=MSDAORA.1;Persist Security Info=True;fetchsize=100000;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAANREQfcXF5kqSt2uDFuKqbgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADaLG85ep6stjphgvZV6ONUAAAAAASAAACgAAAAEAAAABtcT3xgZZ0lqPHSxGQRDDoYAAAAx9nBvVqBXGdGyvjZS+3kGrzD9uu3g1fgFAAAAIY5h3zggpbF/iJSzArW+ds1L5tW</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SDRSDSSQLD1.nac.ppg.com.Comex_TI_Visibility.cmxaxxvisi]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{00CA08B7-A1B8-4F47-A12F-491E969476D2}"
+      DTS:ObjectName="SDRSDSSQLD1.nac.ppg.com.Comex_TI_Visibility.cmxaxxvisi">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SDRSDSSQLD1.nac.ppg.com;User ID=cmxaxxvisi;Initial Catalog=Comex_TI_Visibility;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAANREQfcXF5kqSt2uDFuKqbgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACdkvre665bFetUdLW0JWxSAAAAAASAAACgAAAAEAAAAOKkCRBLkQPMgYLcDwUuexcgAAAAvA3UcT5TqHs6mr5+jSK0dpGg0oyqBF+K8CoU2LJVK/YUAAAAKvFxGuwbpyZLi66Ex93NguNrWNc</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables />
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

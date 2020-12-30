@@ -1,0 +1,769 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/11/2020 12:38:33 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="WCUAL87S4SQ2"
+  DTS:CreatorName="PPGNA\J382577"
+  DTS:DTSID="{AB3354C5-0CE7-41DC-BE9E-A7AC1A7C857F}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.128"
+  DTS:LocaleID="2058"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="19"
+  DTS:VersionGUID="{2E48BDF3-F67C-4570-9350-DABBB4FAE871}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[172.19.12.100:1528/DEV.APPS]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{EAB113E5-5683-44E9-86B5-511A5780F8F6}"
+      DTS:ObjectName="172.19.12.100:1528/DEV.APPS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=172.19.12.100:1528/DEV;User ID=APPS;Provider=MSDAORA.1;Persist Security Info=True;fetchsize=100000;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhgKu9uIQ1UiZkDW7JWrCGwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAcX1IogEDV1iCcaqc5/cyBAAAAAASAAACgAAAAEAAAADoTEsw7GoXKhK1B7AcA6i0gAAAAnA3PwWV5QD3ADo0vl8fIWwYdvcxBv1hBRi8Y2YpGZ2EUAAAABh3xVj40O9SKmATkxdtv8/Jw+lg</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SDRSDSSQLD1.nac.ppg.com.Comex_TI_Visibility.cmxaxxvisi]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{00CA08B7-A1B8-4F47-A12F-491E969476D2}"
+      DTS:ObjectName="SDRSDSSQLD1.nac.ppg.com.Comex_TI_Visibility.cmxaxxvisi">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SDRSDSSQLD1.nac.ppg.com;User ID=cmxaxxvisi;Initial Catalog=Comex_TI_Visibility;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhgKu9uIQ1UiZkDW7JWrCGwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAClF8hFeyjniZCQPFkL/r91AAAAAASAAACgAAAAEAAAAD356edlRTqF0GT7hyna6V4YAAAAhupijPxzBUsiZuCOiuZlACaHxLrQceaSFAAAAMlWSD7wVHU9HfDoD/JAdrqtzI1V</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Prep Sequence Container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{DE70F119-6B81-42AD-8AE8-586D3B3CFBA6}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Prep Sequence Container">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Data Prep Sequence Container\Truncate Stagging"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{8D5ED66A-9947-43CE-9E39-6A74DF9D22E3}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate Stagging"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{00CA08B7-A1B8-4F47-A12F-491E969476D2}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE stg_cat_orden&#xA;TRUNCATE TABLE tmp_Cat_Order_Source" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Data Prep Sequence Container\Update Oracle Log"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{79A59F84-2419-4811-992F-C8BB55B1201C}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Update Oracle Log"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Data Prep Sequence Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{CEF95293-7391-4A0A-A877-EEC7700145DD}"
+          DTS:From="Package\Data Prep Sequence Container\Truncate Stagging"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Data Prep Sequence Container\Update Oracle Log" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Main Sequence Container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Main Sequence Container"
+      DTS:DTSID="{422494A3-57A4-41AF-A012-F6EFB6D77014}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Main Sequence Container">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Main Sequence Container\Header Data Flow"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{62D77413-7C6F-40F8-84FC-1EF265DFF8A0}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Header Data Flow"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              autoAdjustBufferSize="true"
+              defaultBufferMaxRows="100000"
+              version="1">
+              <components>
+                <component
+                  refId="Package\Main Sequence Container\Header Data Flow\Oracle Extraction"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Oracle Extraction"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT METODO_ENVIO, 1 ESTATUS
+FROM XXCMX.XXCMX_ONT_ORDER_HEADERS_ALL
+WHERE HEADER_ID &lt; 350000</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">true</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Main Sequence Container\Header Data Flow\Oracle Extraction.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[172.19.12.100:1528/DEV.APPS]"
+                      connectionManagerRefId="Package.ConnectionManagers[172.19.12.100:1528/DEV.APPS]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Main Sequence Container\Header Data Flow\Oracle Extraction.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Main Sequence Container\Header Data Flow\Oracle Extraction.Outputs[OLE DB Source Output].Columns[METODO_ENVIO]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Main Sequence Container\Header Data Flow\Oracle Extraction.Outputs[OLE DB Source Output].ExternalColumns[METODO_ENVIO]"
+                          length="240"
+                          lineageId="Package\Main Sequence Container\Header Data Flow\Oracle Extraction.Outputs[OLE DB Source Output].Columns[METODO_ENVIO]"
+                          name="METODO_ENVIO"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Main Sequence Container\Header Data Flow\Oracle Extraction.Outputs[OLE DB Source Output].Columns[ESTATUS]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Main Sequence Container\Header Data Flow\Oracle Extraction.Outputs[OLE DB Source Output].ExternalColumns[ESTATUS]"
+                          lineageId="Package\Main Sequence Container\Header Data Flow\Oracle Extraction.Outputs[OLE DB Source Output].Columns[ESTATUS]"
+                          name="ESTATUS"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Main Sequence Container\Header Data Flow\Oracle Extraction.Outputs[OLE DB Source Output].ExternalColumns[METODO_ENVIO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="240"
+                          name="METODO_ENVIO" />
+                        <externalMetadataColumn
+                          refId="Package\Main Sequence Container\Header Data Flow\Oracle Extraction.Outputs[OLE DB Source Output].ExternalColumns[ESTATUS]"
+                          dataType="r8"
+                          name="ESTATUS" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Main Sequence Container\Header Data Flow\Oracle Extraction.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Main Sequence Container\Header Data Flow\Oracle Extraction.Outputs[OLE DB Source Error Output].Columns[METODO_ENVIO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="240"
+                          lineageId="Package\Main Sequence Container\Header Data Flow\Oracle Extraction.Outputs[OLE DB Source Error Output].Columns[METODO_ENVIO]"
+                          name="METODO_ENVIO" />
+                        <outputColumn
+                          refId="Package\Main Sequence Container\Header Data Flow\Oracle Extraction.Outputs[OLE DB Source Error Output].Columns[ESTATUS]"
+                          dataType="r8"
+                          lineageId="Package\Main Sequence Container\Header Data Flow\Oracle Extraction.Outputs[OLE DB Source Error Output].Columns[ESTATUS]"
+                          name="ESTATUS" />
+                        <outputColumn
+                          refId="Package\Main Sequence Container\Header Data Flow\Oracle Extraction.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Main Sequence Container\Header Data Flow\Oracle Extraction.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Main Sequence Container\Header Data Flow\Oracle Extraction.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Main Sequence Container\Header Data Flow\Oracle Extraction.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Main Sequence Container\Header Data Flow\Stagging Load"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Stagging Load"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[tmp_Cat_Order_Source]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Main Sequence Container\Header Data Flow\Stagging Load.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[SDRSDSSQLD1.nac.ppg.com.Comex_TI_Visibility.cmxaxxvisi]"
+                      connectionManagerRefId="Package.ConnectionManagers[SDRSDSSQLD1.nac.ppg.com.Comex_TI_Visibility.cmxaxxvisi]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Main Sequence Container\Header Data Flow\Stagging Load.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Main Sequence Container\Header Data Flow\Stagging Load.Inputs[OLE DB Destination Input].Columns[ESTATUS]"
+                          cachedDataType="r8"
+                          cachedName="ESTATUS"
+                          externalMetadataColumnId="Package\Main Sequence Container\Header Data Flow\Stagging Load.Inputs[OLE DB Destination Input].ExternalColumns[Description_Order_Source]"
+                          lineageId="Package\Main Sequence Container\Header Data Flow\Oracle Extraction.Outputs[OLE DB Source Output].Columns[ESTATUS]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Main Sequence Container\Header Data Flow\Stagging Load.Inputs[OLE DB Destination Input].ExternalColumns[Description_Order_Source]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Description_Order_Source" />
+                        <externalMetadataColumn
+                          refId="Package\Main Sequence Container\Header Data Flow\Stagging Load.Inputs[OLE DB Destination Input].ExternalColumns[Enable]"
+                          dataType="bool"
+                          name="Enable" />
+                        <externalMetadataColumn
+                          refId="Package\Main Sequence Container\Header Data Flow\Stagging Load.Inputs[OLE DB Destination Input].ExternalColumns[Id_Order_Source]"
+                          dataType="i4"
+                          name="Id_Order_Source" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Main Sequence Container\Header Data Flow\Stagging Load.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Main Sequence Container\Header Data Flow\Stagging Load.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Main Sequence Container\Header Data Flow\Stagging Load.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Main Sequence Container\Header Data Flow\Stagging Load.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Main Sequence Container\Header Data Flow\Stagging Load.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Main Sequence Container\Header Data Flow\Stagging Load.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Main Sequence Container\Header Data Flow.Paths[OLE DB Source Output]"
+                  endId="Package\Main Sequence Container\Header Data Flow\Stagging Load.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Main Sequence Container\Header Data Flow\Oracle Extraction.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Main Sequence Container\TMP to Axxess Data Flow"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{C1D5119C-DC0B-4C4B-A964-E7AF3ADF2D3E}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="TMP to Axxess Data Flow"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Main Sequence Container\TMP to Axxess Data Flow\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Main Sequence Container\TMP to Axxess Data Flow\OLE DB Source.Connections[OleDbConnection]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Main Sequence Container\TMP to Axxess Data Flow\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <externalMetadataColumns
+                        isUsed="True" />
+                    </output>
+                    <output
+                      refId="Package\Main Sequence Container\TMP to Axxess Data Flow\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Main Sequence Container\TMP to Axxess Data Flow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Main Sequence Container\TMP to Axxess Data Flow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Main Sequence Container\TMP to Axxess Data Flow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Main Sequence Container\TMP to Axxess Data Flow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Main Sequence Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{27A224C9-47A3-4556-9478-E2D7163F9D54}"
+          DTS:From="Package\Main Sequence Container\Header Data Flow"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Main Sequence Container\TMP to Axxess Data Flow" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{3711249E-40BA-47D2-A2D1-B3E36B1E6DD5}"
+      DTS:From="Package\Data Prep Sequence Container"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Main Sequence Container" />
+  </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{7BECCA96-72B6-48BC-A7C6-E636DCE03B3E}"
+      DTS:EventID="0"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{C5E6333E-BE25-415B-A660-027E439D80C9}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\Send Mail Task"
+          DTS:CreationName="Microsoft.SendMailTask"
+          DTS:Description="Send Mail Task"
+          DTS:DTSID="{9B2C033F-FEEC-464D-9467-F92287BDB56B}"
+          DTS:ExecutableType="Microsoft.SendMailTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Send Mail Task"
+          DTS:TaskContact="Send Mail Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData />
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="162.666666666667,42"
+          Id="Package\Data Prep Sequence Container\Truncate Stagging"
+          TopLeft="76.9666458381555,45.066668429905" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Data Prep Sequence Container\Update Oracle Log"
+          TopLeft="73.1666488183877,151.533334938155" />
+        <EdgeLayout
+          Id="Package\Data Prep Sequence Container.PrecedenceConstraints[Constraint]"
+          TopLeft="157.266647328272,86.666668429905">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,64.8666665082504"
+              Start="0,0"
+              End="0,57.3666665082504">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.3666665082504" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="312,248"
+          Size="312,290.666666666667"
+          Id="Package\Data Prep Sequence Container"
+          TopLeft="374.999985098839,63.9333337397048" />
+        <NodeLayout
+          Size="162,42"
+          Id="Package\Main Sequence Container\Header Data Flow"
+          TopLeft="85.0333124385947,46.4666689051521" />
+        <NodeLayout
+          Size="198,42"
+          Id="Package\Main Sequence Container\TMP to Axxess Data Flow"
+          TopLeft="65.3999827146538,152.000002975464" />
+        <EdgeLayout
+          Id="Package\Main Sequence Container.PrecedenceConstraints[Constraint]"
+          TopLeft="165.216647576624,88.0666689051521">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,63.9333340703119"
+              Start="0,0"
+              End="0,56.4333340703119">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.4333340703119" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="321.333333333334,254.666666666667"
+          Size="321.333333333334,298"
+          Id="Package\Main Sequence Container"
+          TopLeft="370.833318597741,460.800002727508" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="531.16665184829,354.933333739705">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,105.866668987803"
+              Start="0,0"
+              End="0,98.3666689878031">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,98.3666689878031" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Flujo de carga de cabecero.&#xA;- Carga desde Oracle.&#xA;- Inserción / Actualización de Axxess."
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="222.666666666667,88"
+          Id="31c36e50-7593-4385-bb7d-316a9444f5b0"
+          TopLeft="92.4999963243805,458.733336467213" />
+        <AnnotationLayout
+          Text="Flujo de preparación de área de trabajo.&#xA;- Limpieza de tabla temporal.&#xA;- Ejecución de procedimiento almacenado."
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="254,72"
+          Id="1064c58d-b0e6-4fde-9eff-779d06321495"
+          TopLeft="90.8333297239407,70.866665227148" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package.EventHandlers[OnError]\Send Mail Task"
+          TopLeft="800,199" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <TaskHost
+    design-time-name="Package\Main Sequence Container\Header Data Flow">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="146,42"
+          Id="Package\Main Sequence Container\Header Data Flow\Stagging Load"
+          TopLeft="445.833315617509,279.933335558044" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Main Sequence Container\Header Data Flow\Oracle Extraction"
+          TopLeft="440.833315816191,122.200000971158" />
+        <EdgeLayout
+          Id="Package\Main Sequence Container\Header Data Flow.Paths[OLE DB Source Output]"
+          TopLeft="519.33331571685,163.800000971158">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,116.133334586885"
+              Start="0,0"
+              End="0,108.633334586885">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,108.633334586885" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Main Sequence Container\Header Data Flow\Oracle Extraction">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Main Sequence Container\Header Data Flow\Stagging Load">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Main Sequence Container\TMP to Axxess Data Flow">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\Main Sequence Container\TMP to Axxess Data Flow\OLE DB Source"
+          TopLeft="556,87" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
